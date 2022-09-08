@@ -1,0 +1,84 @@
+# exclude SafeMath when calculating test coverage
+# https://eth-brownie.readthedocs.io/en/v1.10.3/config.html#exclude_paths
+dependencies:
+  - smartcontractkit/chainlink-brownie-contracts@0.4.0
+  - aave/protocol-v2@1.0.1
+compiler:
+  solc:
+    remappings:
+      - "@chainlink=smartcontractkit/chainlink-brownie-contracts@0.4.0"
+      - "@aave=aave/protocol-v2@1.0.1"
+# automatically fetch contract sources from Etherscan
+autofetch_sources: True
+dotenv: .env
+explorer: "https://api.etherscan.io/api"
+# Change to trye to verify smart contracts
+verify: False
+# set a custom mnemonic for the development network
+networks:
+  default: mainnet-fork
+  mainnet-fork:
+    explorer: "https://api.etherscan.io/api?apikey=XX89XBKTTDVU3W2RKVHMRJ3E5N8QNJWQNT"
+    lending_pool_addresses_provider: "0xB53C1a33016B2DC2fF3653530bfF1848a515c8c5"
+    ProtocolDataProvider: "0x057835Ad21a177dbdd3090bB1CAE03EaCF78Fc6d"
+    weth_token: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    # For mainnet, the link token is the same
+    link_token: "0x514910771af9ca656af840dff83e8264ecf986ca"
+    aave_link_token: "0x514910771af9ca656af840dff83e8264ecf986ca"
+    aave_dai_token: "0x6b175474e89094c44da98b954eedeac495271d0f"
+    dai_token: "0x6b175474e89094c44da98b954eedeac495271d0f"
+    wbtc_token: "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599"
+    usdc_token: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+    comp_token: "0xc00e94Cb662C3520282E6f5717214004A7f26888"
+    tether: "0xdAC17F958D2ee523a2206206994597C13D831ec7"
+    BAT: "0x0D8775F648430679A709E98d2b0Cb6250d2887EF"
+    frax: "0x853d955aCEf822Db058eb8505911ED77F175b99e"
+    balancer: "0xba100000625a3754423978a60c9317c58a424e3D"
+    mana: "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942"
+    busd: "0x4Fabb145d64652a948d72533023f6E7A623C7C53"
+    curve: "0xD533a949740bb3306d119CC777fa900bA034cd52"
+    aave: "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9"
+    dydx: "0x92D6C1e31e14520e676a687F0a93788B716BEff5"
+    UniSwapFactory: "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f"
+    UniSwapRouter: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D"
+    link_eth_price_feed: "0xDC530D9457755926550b59e8ECcdaE7624181557"
+    dai_eth_price_feed: "0x773616E4d11A78F511299002da57A0a94577F1f4"
+    usdc_eth_price_feed: "0x986b5E1e1755e3C2440e960477f25201B0a8bbD4"
+    usdt_eth_price_feed: "0xEe9F2375b4bdF6387aa8265dD4FB8F16512A1d46"
+    busd_eth_price_feed: "0x614715d2Af89E6EC99A233818275142cE88d1Cfd"
+    bat_eth_price_feed: "0x0d16d4528239e9ee52fa531af613AcdB23D88c94"
+    frax_eth_price_feed: "0x14d04Fff8D21bd62987a5cE9ce543d2F1edF5D3E"
+    balancer_eth_price_feed: "0xC1438AA3823A6Ba0C159CfA8D98dF5A994bA120b"
+    curve_eth_price_feed: "0x8a12Be339B0cD1829b91Adc01977caa5E9ac121e"
+    dai_usd_prive_feed: "0xAed0c38402a5d19df6E4c03F4E2DceD6e29c1ee9"
+  kovan:
+    vrf_coordinator: "0xdD3782915140c8f3b190B5D67eAc6dc5760C46E9"
+    # https://aave.github.io/aave-addresses/kovan.json
+    # Aave uses their own testnet tokens to ensure they
+    # always have enough to play with.
+    # find the most up to date token addresses in the above link
+    aave_link_token: "0xAD5ce863aE3E4E9394Ab43d4ba0D80f419F61789"
+    aave_dai_token: "0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD"
+    link_token: "0xa36085F69e2889c224210F603D836748e7dC0088"
+    keyhash: "0x6c3699283bda56ad74f6b855546325b68d482e983852a7a82979cc4807b641f4"
+    fee: 100000000000000000
+    oracle: "0x2f90A6D021db21e1B2A077c5a37B3C7E75D15b7e"
+    jobId: "29fa9aa13bf1468788b7cc4a500a45b8"
+    eth_usd_price_feed: "0x9326BFA02ADD2366b30bacB125260Af641031331"
+    link_eth_price_feed: "0x3Af8C569ab77af5230596Acf0E8c2F9351d24C38"
+    dai_eth_price_feed: "0x22B58f1EbEDfCA50feF632bD73368b2FdA96D541"
+    # You can get the address of the lending pool from the lending pool address provider
+    # Sometimes the lending_pool address changes, so we want to get the address from there
+    lending_pool_addresses_provider: "0x88757f2f99175387ab4c6a4b3067c77a695b0349"
+    weth_token: "0xd0a1e359811322d97991e03f863a0c30c2cf029c"
+wallets:
+  from_key: ${PRIVATE_KEY}
+  from_mnemonic: ${MNEMONIC}
+settings:
+  gas_limit: "2074044"
+
+  # could also do from_mnemonic, and you'd have to change the accounts.add to accounts.from_mnemonic
+
+reports:
+  exclude_contracts:
+    - SafeMath
